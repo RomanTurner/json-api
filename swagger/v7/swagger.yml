@@ -1,0 +1,204 @@
+---
+openapi: 3.0.1
+info:
+  title: API V7
+  version: v7
+paths:
+  "/api/v7/marketing_ads/{placement}/{type}/{user_state}/{site_key}":
+    get:
+      summary: Retrieves a Marketing Ad
+      tags:
+      - Marketing Ad
+      parameters:
+      - name: placement
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: user_state
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: site_key
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: marketing ad found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      type:
+                        type: string
+                      attributes:
+                        type: object
+                        properties:
+                          sectionKey:
+                            type: string
+                          type:
+                            type: string
+                          beltAdType:
+                            type: string
+                          status:
+                            type: string
+                          publishOn:
+                            type: string
+                          siteList:
+                            type: array
+                          userState:
+                            type: string
+                          title:
+                            type: string
+                          dek:
+                            type: string
+                          cta:
+                            type: string
+                          urlDesktop:
+                            type: string
+                          urlMobile:
+                            type: string
+                          urlTablet:
+                            type: string
+                          altText:
+                            type: string
+                            nullable: true
+                          secondaryAltText:
+                            type: string
+                            nullable: true
+                          newsletter:
+                            type: string
+                            nullable: true
+                      relationships:
+                        type: object
+                        properties:
+                          desktopPhoto:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                  type:
+                                    type: string
+                          mobilePhoto:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                  type:
+                                    type: string
+                          desktopSecondaryPhoto:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                  type:
+                                    type: string
+                          mobileSecondaryPhoto:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                  type:
+                                    type: string
+                          tablet_photo:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                  type:
+                                    type: string
+                          landscape_photo:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                  type:
+                                    type: string
+                          tablet_secondary_photo:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                  type:
+                                    type: string
+                          landscape_secondary_photo:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                nullable: true
+                                properties:
+                                  id:
+                                    type: string
+                                  type:
+                                    type: string
+                      links:
+                        type: object
+                        properties:
+                          retailProductCollectionUrl:
+                            type: string
+                            nullable: true
+                  included:
+                    type: array
+                    items:
+                      properties:
+                        id:
+                          type: string
+                        type:
+                          type: string
+                        attributes:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            cloudinaryId:
+                              type: string
+        '404':
+          description: marketing ad not found
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.americastestkitchen.com
